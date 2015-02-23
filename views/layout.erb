@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>TC 359 Project 7 | Jerold Lewis</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="titleRow">
+        <div class="col-md-12" id="titleCol">
+          <h1>TC 359 Project 7</h1>
+        </div>
+      </div>
+      <div class="row" id="contentDiv">
+        <div class="col-md-6" id="textDiv1">
+          <%= yield_content :content1 %>
+        </div>
+        <div class="col-md-6" id="textDiv2">
+          <div class="imgWrapper">
+            <%= yield_content :content2 %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

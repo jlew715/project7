@@ -1,0 +1,47 @@
+#titleRow{
+  background-color:#000000;
+}
+
+#titleCol{
+  text-align:center;
+}
+
+body{
+  color:#C0C0C0;
+  background-color:#333333;
+}
+
+form{
+  color:#000000;
+}
+
+#contentDiv p{
+  width:100%;
+  text-align:center;
+}
+
+.imgWrapper{
+  width:100%;
+}
+
+.imgWrapper img{
+  border-radius:50px;
+  display:block;
+  margin:auto;
+}
+
+.imgWrapper p{
+  text-align:center;
+}
+
+#textDiv1{
+  font-size:2em;
+}
+
+#textDiv2{
+  font-size:2em;
+}
+
+h3{
+  color:#C0C0C0;
+}

@@ -1,0 +1,54 @@
+<% content_for :content1 do %>
+  <%
+    selectedCountry = ""
+    selectedMonth = ""
+    selectedYear = 0
+    if params.empty?
+      selectedCountry = "US"
+      selectedMonth = "1"
+      selectedYear = 2015
+    else
+      selectedCountry = params['country']
+      selectedMonth = params['month']
+      selectedYear = params['year']
+    end
+  %>
+  <form>
+    <h3>Select your country:</h3>
+    <select name="country" class="form-control">
+      <option value="US" <%= if selectedCountry == "US" then 'selected' end %>>United States</option>
+      <option value="GB" <%= if selectedCountry == "GB" then 'selected' end %>>Great Britian</option>
+      <option value="BE" <%= if selectedCountry == "BE" then 'selected' end %>>Belgium</option>
+      <option value="BR" <%= if selectedCountry == "BR" then 'selected' end %>>Brazil</option>
+    </select>
+    <h3>Select which month you'd like to view holidays for:</h3>
+    <select name="month" class="form-control">
+      <option value="1" <%= if selectedMonth == "1" then 'selected' end %>>January</option>
+      <option value="2" <%= if selectedMonth == "2" then 'selected' end %>>February</option>
+      <option value="3" <%= if selectedMonth == "3" then 'selected' end %>>March</option>
+      <option value="4" <%= if selectedMonth == "4" then 'selected' end %>>April</option>
+      <option value="5" <%= if selectedMonth == "5" then 'selected' end %>>May</option>
+      <option value="6" <%= if selectedMonth == "6" then 'selected' end %>>June</option>
+      <option value="7" <%= if selectedMonth == "7" then 'selected' end %>>July</option>
+      <option value="8" <%= if selectedMonth == "8" then 'selected' end %>>August</option>
+      <option value="9" <%= if selectedMonth == "9" then 'selected' end %>>September</option>
+      <option value="10" <%= if selectedMonth == "10" then 'selected' end %>>October</option>
+      <option value="11" <%= if selectedMonth == "11" then 'selected' end %>>November</option>
+      <option value="12" <%= if selectedMonth == "12" then 'selected' end %>>December</option>
+    </select>
+    <h3>Select which year you'd like to view holidays for (1900-2100):</h3>
+    <input name="year" type="number" min="1900" max="2100" value="<%= selectedYear %>">
+    <br/>
+    <br/>
+    <button type="submit">Show me them holidays, bro!</button>
+  </form>
+  <h1>Holidays:</h1>
+  <%
+    holary = Array.new
+    holidays = HolidApi.get(country: selectedCountry, year: selectedYear, month: selectedMonth)
+    for i in 0..holidays.length-1 do
+      holary[i] = holidays[i][0]["name"]
+    end
+  %>
+  <%= holary.join("<br/>") %>
+<% end %>
