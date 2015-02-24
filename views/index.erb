@@ -40,15 +40,20 @@
     <input name="year" type="number" min="1900" max="2100" value="<%= selectedYear %>">
     <br/>
     <br/>
-    <button type="submit">Show me them holidays, bro!</button>
+    <button type="submit" name="submit">Show me the holidays, already!</button>
   </form>
   <h1>Holidays:</h1>
   <%
     holary = Array.new
-    holidays = HolidApi.get(country: selectedCountry, year: selectedYear, month: selectedMonth)
-    for i in 0..holidays.length-1 do
-      holary[i] = holidays[i][0]["name"]
+    holary.clear
+    begin
+      holidays = HolidApi.get(country: selectedCountry, year: selectedYear, month: selectedMonth)
+      for i in 0..holidays.length-1 do
+        holary[i] = holidays[i][0]["name"]
+      end
+    rescue
+      holary[0]="ENTER A YEAR PLZ"
     end
   %>
-  <%= holary.join("<br/>") %>
+  <%= holary.join("<br/>")  %>
 <% end %>
